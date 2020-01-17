@@ -70,7 +70,7 @@ async def berry(event):
                 ev += "\n**Soil Dryness** = {}".format(dry)
                 await event.edit(ev)
         else:
-                await event.edit("Berry Not Found,Is the name correct? (The Database only contains info about 20 berries even if name was correct there is a chance that berry is not in database")
+                await event.edit("Berry Not Found.")
 @borg.on(admin_cmd(pattern="move ?(.*)", allow_sudo=True))
 async def moves(event):
         move = event.pattern_match.group(1)
