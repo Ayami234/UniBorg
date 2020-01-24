@@ -91,7 +91,6 @@ async def on_regex(event):
         return
     if not event.is_private and\
             await group_has_sedbot(await event.get_input_chat()):
-        await event.edit("This group has a sed bot. Ignoring this message!")
         return
 
     chat_id = utils.get_peer_id(await event.get_input_chat())
