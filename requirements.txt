@@ -6,4 +6,5 @@ ChatterBot
 spcli
 instaloader
 coffeehouse==1.0.4
+pymongo[tls,srv,gssapi,snappy]>=3.7.0b1
 -r ./requirements-stdborg.txt
