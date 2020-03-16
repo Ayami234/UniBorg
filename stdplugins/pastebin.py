@@ -42,13 +42,13 @@ async def _(event):
             message = previous_message.message
     else:
         message = "SYNTAX: `.paste <long text to include>`"
-    url = "https://del.dog/documents"
-    r = requests.post(url, data=message.encode("UTF-8")).json()
-    url = f"https://del.dog/{r['key']}"
+    url = "https:// nekobin.com/api/documents"
+    r = requests.post(url, json = {'content': message}).json()['result']
+    url = f"https:// nekobin.com/{r['key']}"
     end = datetime.now()
     ms = (end - start).seconds
     if r["isUrl"]:
         nurl = f"https://del.dog/v/{r['key']}"
-        await event.edit("Dogged to {} in {} seconds. GoTo Original URL: {}".format(url, ms, nurl))
+        await event.edit("Nekofied to {} in {} seconds. GoTo Original URL: {}".format(url, ms, nurl))
     else:
-        await event.edit("Dogged to {} in {} seconds".format(url, ms))
+        await event.edit("Nekofied to {} in {} seconds".format(url, ms))
