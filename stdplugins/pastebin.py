@@ -42,9 +42,9 @@ async def _(event):
             message = previous_message.message
     else:
         message = "SYNTAX: `.paste <long text to include>`"
-    url = "https:// nekobin.com/api/documents"
+    url = "https://nekobin.com/api/documents"
     r = requests.post(url, json = {'content': message}).json()['result']
-    url = f"https:// nekobin.com/{r['key']}" + '.py'
+    url = f"https://nekobin.com/{r['key']}" + '.py'
     end = datetime.now()
     ms = (end - start).seconds
     await event.edit("Nekofied to {} in {} seconds".format(url, ms))
