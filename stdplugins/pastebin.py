@@ -44,7 +44,7 @@ async def _(event):
         message = "SYNTAX: `.paste <long text to include>`"
     url = "https:// nekobin.com/api/documents"
     r = requests.post(url, json = {'content': message}).json()['result']
-    url = f"https:// nekobin.com/{r['key']}"
+    url = f"https:// nekobin.com/{r['key']}" + '.py'
     end = datetime.now()
     ms = (end - start).seconds
     if r["isUrl"]:
