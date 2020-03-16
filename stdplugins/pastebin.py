@@ -47,8 +47,4 @@ async def _(event):
     url = f"https:// nekobin.com/{r['key']}" + '.py'
     end = datetime.now()
     ms = (end - start).seconds
-    if r["isUrl"]:
-        nurl = f"https://del.dog/v/{r['key']}"
-        await event.edit("Nekofied to {} in {} seconds. GoTo Original URL: {}".format(url, ms, nurl))
-    else:
-        await event.edit("Nekofied to {} in {} seconds".format(url, ms))
+    await event.edit("Nekofied to {} in {} seconds".format(url, ms))
