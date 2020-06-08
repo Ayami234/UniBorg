@@ -10,7 +10,7 @@ async def _(event):
     tracemoe = tracemoepy.tracemoe.TraceMoe()
     search = tracemoe.search(file, encode=True).json()
     result = search['docs'][0]
-    msg = (f"{result['title_english']}\n{result['similarity'][0:2]}")
+    msg = (f"{result['title_english']}\n{str(result['similarity'])[0:2]}")
     preview = tracemoe.video_preview(search)
     with open('preview.mp4', 'wb') as f:
      f.write(preview)
