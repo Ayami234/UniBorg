@@ -17,4 +17,4 @@ async def _(event):
     with open('preview.mp4', 'wb') as f:
      f.write(preview)
     await event.reply(msg)
-    await borg.send_file(event.chat_id, preview, caption = msg, force_document=False)
+    await borg.send_file(event.chat_id, 'preview.mp4', caption = msg, force_document=False)
