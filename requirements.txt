@@ -7,5 +7,5 @@ spcli
 instaloader
 coffeehouse==1.0.4
 pymongo>=3.7.0b1
-tracemoepy
+tracemoepy>=0.6
 -r ./requirements-stdborg.txt
