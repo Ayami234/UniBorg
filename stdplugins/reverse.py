@@ -8,7 +8,7 @@ async def _(event):
     reply_message = await event.get_reply_message()
     file = await borg.download_media(reply_message)
     tracemoe = tracemoepy.async_trace.Async_Trace()
-    search = await tracemoe.search(file, encode=True).json()
+    search = await tracemoe.search(file, encode=True)
     result = search['docs'][0]
     msg = f"**Title**: {result['title_english']}"\
           f"\n**Similarity**: {str(result['similarity'])[1:2]}"\
