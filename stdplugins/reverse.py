@@ -10,9 +10,9 @@ async def _(event):
         await event.edit('Reply to a gif/video/image to reverse search.')
         return
     if reply_message.video or reply_message.gif:
-        file = await borg.download_media(reply_message, thumb=-1)
+        file = await borg.download_media(reply_message, thumb=-1, progress_callback = lambda current, total: await event.edit('Downloaded', current, 'out of', total,'bytes: {:.2%}'.format(current / total)))
     else:
-        file = await borg.download_media(reply_message)
+        file = await borg.download_media(reply_message, progress_callback = lambda current, total: await event.edit('Downloaded', current, 'out of', total,'bytes: {:.2%}'.format(current / total)))
     tracemoe = tracemoepy.async_trace.Async_Trace()
     search = await tracemoe.search(file, encode=True)
     result = search['docs'][0]
