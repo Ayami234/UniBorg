@@ -1,4 +1,4 @@
-telethon == 1.16.14
+telethon == 1.16.4
 lxml
 selenium
 aria2p
