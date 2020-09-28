@@ -75,7 +75,7 @@ async def _(event):
     await event.delete()
 
 
-@borg.on(admin_cmd(pattern="google reverse search"))
+@borg.on(admin_cmd(pattern="gr"))
 async def _(event):
     if event.fwd_from:
         return
