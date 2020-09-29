@@ -111,8 +111,12 @@ async def _(event):
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0"
         }
         response = requests.get(the_location, headers=headers)
-        soup = BeautifulSoup(response.text, "html.parser")
+        soup = BeautifulSoup(response.text, "lxml")
         # document.getElementsByClassName("r5a77d"): PRS
+        results = []
+        for best_guess in soup.findAll('div', attrs={'class': 'r5a77d'}):
+            results.append(best_guess.get_text())
+        await event.reply(' '.join(results))
         prs_div = soup.find_all("div", {"class": "r5a77d"})[0]
         prs_anchor_element = prs_div.find("a")
         prs_url = BASE_URL + prs_anchor_element.get("href")
@@ -123,7 +127,7 @@ async def _(event):
         end = datetime.now()
         ms = (end - start).seconds
         OUTPUT_STR = """{img_size}
-**Possible Related Search**: <a href="{prs_url}">{prs_text}</a>
+Possible Related Search: <a href="{prs_url}">{prs_text}</a>
 
 More Info: Open this <a href="{the_location}">Link</a> in {ms} seconds""".format(**locals())
     await event.edit(OUTPUT_STR, parse_mode="HTML", link_preview=False)
