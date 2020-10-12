@@ -14,12 +14,12 @@ async def _(event):
     else:
         file = await borg.download_media(reply_message, progress_callback = lambda current, total: event.edit(f'Downloaded {current} out of {total} ' + 'bytes: {:.2%}'.format(current / total)))
     tracemoe = tracemoepy.async_trace.Async_Trace()
-    search = await tracemoe.search(file, encode=True)
+    search = await tracemoe.search(file, upload_file = True)
     result = search['docs'][0]
     msg = f"**Title**: {result['title_english']}"\
           f"\n**Similarity**: {result['similarity']*100}"\
           f"\n**Episode**: {result['episode']}"
-    preview = await tracemoe.video_preview(search)
+    preview = await tracemoe.natural_preview(search)
     with open('preview.mp4', 'wb') as f:
      f.write(preview)
     await event.edit(msg)
